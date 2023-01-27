@@ -2,10 +2,12 @@
   display: flex;
   width: 100%;
   background-color: $royal-blue-dark;
+  height: 10rem;
 
   &__item {
     font-weight: bold;
     background-color: $indigo-dye;
+    color: $royal-blue-dark;
     margin: 2rem;
   }
 }
