@@ -1,0 +1,9 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    flex-grow: 1;
+    height: calc(100vh - 20rem);
+  }
+}
