@@ -1,0 +1,11 @@
+.navbar {
+  display: flex;
+  width: 100%;
+  background-color: $royal-blue-dark;
+
+  &__item {
+    font-weight: bold;
+    background-color: $indigo-dye;
+    margin: 2rem;
+  }
+}
