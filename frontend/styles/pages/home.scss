@@ -1,0 +1,22 @@
+.home {
+  text-align: center;
+  font-size: 2.5rem;
+  
+  h1 {
+    font-size: 4rem;
+  }
+
+  &__options {
+    display: flex;
+    justify-content: center;
+
+    &__buttons {
+      background-color: $oxford-blue;
+      color: $cg-blue;
+      font-weight: bold;
+      margin-right: 1rem;
+    }
+  }
+
+
+}
