@@ -1,0 +1,44 @@
+.tryit {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  #upload {
+    display: none;
+  }
+
+  &__upload-button {
+    width: 20rem;
+  }
+
+  &__clear {
+    background-color: $oxford-blue;
+    color: $cg-blue;
+    padding: 0.5rem;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  &__submit {
+    width: 25rem;
+  }
+
+  &__status-text {
+    margin: 1rem;
+    font-size: 2rem;
+    color: $oxford-blue;
+  }
+
+  &__submit,
+  &__upload-button {
+    color: $cg-blue;
+    background-color: $oxford-blue;
+    margin: 2rem;
+    font-weight: bold;
+  }
+}
