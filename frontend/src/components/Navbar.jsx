@@ -6,7 +6,9 @@ import Button from "./Button";
 const Navbar = () => {
   return (
     <div className="navbar">
-      <Button styling="navbar__item">How it works</Button>
+      <Link to="/">
+        <Button styling="navbar__item">How it works</Button>
+      </Link>
       <Link to="/try-it">
         <Button styling="navbar__item">Try it!</Button>
       </Link>
