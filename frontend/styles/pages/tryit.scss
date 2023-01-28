@@ -13,7 +13,12 @@
   }
 
   &__upload-button {
-    width: 20rem;
+    padding: 0;
+    label {
+      display: inline-flex;
+      cursor: pointer;
+      padding: 2.5rem;
+    }
   }
 
   &__clear {
