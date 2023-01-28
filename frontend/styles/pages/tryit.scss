@@ -4,46 +4,12 @@
   flex-direction: column;
   align-items: center;
 
-  h2 {
-    font-size: 2.5rem;
+  @media (min-width: 750px) {
+    flex-direction: row;
+    justify-content: center;
   }
 
-  #upload {
-    display: none;
-  }
-
-  &__upload-button {
-    padding: 0;
-    label {
-      display: inline-flex;
-      cursor: pointer;
-      padding: 2.5rem;
-    }
-  }
-
-  &__clear {
-    background-color: $oxford-blue;
-    color: $cg-blue;
-    padding: 0.5rem;
-    width: 4rem;
-    height: 4rem;
-  }
-
-  &__submit {
-    width: 25rem;
-  }
-
-  &__status-text {
-    margin: 1rem;
-    font-size: 2rem;
-    color: $oxford-blue;
-  }
-
-  &__submit,
-  &__upload-button {
-    color: $cg-blue;
-    background-color: $oxford-blue;
-    margin: 2rem;
-    font-weight: bold;
+  .response {
+    flex-grow: 1;
   }
 }

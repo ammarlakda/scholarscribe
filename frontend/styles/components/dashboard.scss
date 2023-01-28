@@ -1,0 +1,58 @@
+.dashboard {
+  border-radius: 0.5rem;
+  padding: 2rem;
+  margin: 2rem;  
+  background-color: $indigo-dye;
+  
+  // @media (min-width: 750px) {
+  //   margin-right: 5rem;
+  // }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  #upload {
+    display: none;
+  }
+
+  &__upload-button {
+    padding: 0;
+    label {
+      display: inline-flex;
+      cursor: pointer;
+      padding: 1.5rem;
+    }
+  }
+
+  &__clear {
+    background-color: $oxford-blue;
+    color: $cg-blue;
+    padding: 0.5rem;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  &__submit {
+    width: 25rem;
+  }
+
+  &__submit:disabled {
+    cursor: not-allowed;
+    background-color: lighten($oxford-blue, 2.5%);
+  }
+
+  &__status-text {
+    margin: 1rem;
+    font-size: 2rem;
+    color: $oxford-blue;
+  }
+
+  &__submit,
+  &__upload-button {
+    color: $cg-blue;
+    background-color: $oxford-blue;
+    margin: 2rem;
+    font-weight: bold;
+  }
+}

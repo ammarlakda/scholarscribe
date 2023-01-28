@@ -1,0 +1,17 @@
+.response {
+  width: 80%;
+  font-size: 2rem;
+  margin: auto;
+  text-align: center;
+  margin: 2rem;
+  h3 {
+    font-size: 3rem;
+  }
+
+  @media (min-width: 750px) {
+    // margin-right: 20rem;
+    width: 750px;
+  }
+
+  margin-bottom: 10rem;
+}

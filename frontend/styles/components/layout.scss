@@ -4,6 +4,6 @@
 
   &__content {
     flex-grow: 1;
-    height: calc(100vh - 20rem);
+    min-height: calc(100vh - 20rem);
   }
 }

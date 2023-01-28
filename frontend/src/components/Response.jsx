@@ -1,4 +1,5 @@
 import { useQuery } from "react-query";
+import "../../styles/components/response.scss";
 
 export default function Response({ fetchData }) {
   const { isLoading, error, data } = useQuery("res", fetchData);
@@ -11,7 +12,7 @@ export default function Response({ fetchData }) {
   }
 
   return (
-    <div>
+    <div className="response">
       <h3>Response</h3>
       <div>{data}</div>
     </div>
