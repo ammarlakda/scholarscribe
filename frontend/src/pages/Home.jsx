@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../components/Layout";
 import "../../styles/pages/home.scss";
 import Button from "../components/Button";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -13,8 +14,10 @@ const Home = () => {
           lecture notes generated!
         </p>
         <div className="home__options">
+          <Link to="/try-it">
+            <Button styling="home__options__buttons">Try It!</Button>
+          </Link>
           <Button styling="home__options__buttons">See a Demo</Button>
-          <Button styling="home__options__buttons">Try It!</Button>
         </div>
       </div>
     </Layout>
