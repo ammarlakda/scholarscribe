@@ -3,6 +3,17 @@ from transformers import pipeline
 #call summarizer 
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
+def split_article(Article):
+  #Maximum sequence length 
+  K = 950
+  #Total number of tokens in Document
+  N = len(Article.strip().split(" "))
+  #Let I be the number of sequences of K tokens or less in Document
+  I = (N/K)
+  return I
+
+
+
 #article that we use to summarize
 ARTICLE = """ What you're doing right now at this very moment is killing you. 
 More than cars or the internet or even that little mobile device we keep talking about, the technology you're using the most almost every day is this, your TUSH. 
