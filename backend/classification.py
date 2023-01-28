@@ -13,7 +13,7 @@ file.close()
 
 
 # Define the prompt
-prompt = "Group this paragraph into related content based on sentences in bullet points: " + text
+prompt = "Group this paragraph into related content based on sentences in bullet points (using - ) with subheadings above each group: " + text
 
 # Generate text
 response = openai.Completion.create(
