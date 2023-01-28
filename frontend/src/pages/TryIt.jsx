@@ -18,6 +18,7 @@ const TryIt = () => {
     } else {
       setStatusText("File is not of type mp3 or mp4");
       setValidToSub(false);
+      setSelectedFile(null);
     }
   };
 
@@ -42,9 +43,11 @@ const TryIt = () => {
         {statusText && (
           <>
             <div className="tryit__status-text">{statusText}</div>
-            <Button styling="tryit__clear" onClick={clearFile}>
-              X
-            </Button>
+            {!!selectedFile && (
+              <Button styling="tryit__clear" onClick={clearFile}>
+                X
+              </Button>
+            )}
           </>
         )}
         <Button
