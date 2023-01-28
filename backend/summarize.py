@@ -1,4 +1,6 @@
 from transformers import pipeline
+from nltk import sent_tokenize
+
 
 #call summarizer 
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
@@ -7,10 +9,18 @@ def split_article(Article):
   #Maximum sequence length 
   K = 950
   #Total number of tokens in Document
-  N = len(Article.strip().split(" "))
+  N = len(sent_tokenize(Article))
+  sentences = sent_tokenize(Article)
   #Let I be the number of sequences of K tokens or less in Document
   I = (N/K)
-  return I
+  i =0
+  threshold = 15
+  chunks = [""] * (N//threshold + 1)
+  while i < N: 
+    chunks[i//threshold] += " " + sentences[i]
+    i += 1
+  return chunks
+
 
 
 
