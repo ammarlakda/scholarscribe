@@ -1,6 +1,6 @@
 import openai
 
-
+# Take in summary text and GPT3 will return notated version with subgroups
 def classifySummary(summaryText):
         
 
