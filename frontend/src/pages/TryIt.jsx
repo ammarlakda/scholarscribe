@@ -3,11 +3,30 @@ import { useState } from "react";
 import "../../styles/pages/tryit.scss";
 import Button from "../components/Button";
 import Layout from "../components/Layout";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import Response from "../components/Response";
+
+const queryClient = new QueryClient();
 
 const TryIt = () => {
   const [statusText, setStatusText] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [validToSub, setValidToSub] = useState(false);
+  const [fetchInit, setFetchInit] = useState(false);
+
+  async function fetchData() {
+    const formData = new FormData();
+
+    formData.append("file", selectedFile);
+
+    const req = await fetch(`${import.meta.env.VITE_API_URL}/`, {
+      method: "POST",
+      body: formData,
+    });
+
+    const res = await req.text();
+    return res;
+  }
 
   const getFileUploadHandler = (e) => {
     const file = e.target.files[0];
@@ -23,13 +42,16 @@ const TryIt = () => {
   };
 
   const handleSubmission = () => {
-    console.log(selectedFile);
+    setFetchInit(false);
+    setFetchInit(true);
   };
 
   const clearFile = () => {
     setValidToSub(false);
     setStatusText("");
     setSelectedFile(null);
+    queryClient.cancelQueries({ queryKey: ["res"] });
+    setFetchInit(false);
   };
 
   return (
@@ -57,6 +79,9 @@ const TryIt = () => {
         >
           Submit
         </Button>
+        <QueryClientProvider client={queryClient}>
+          {fetchInit && <Response fetchData={fetchData} />}
+        </QueryClientProvider>
       </div>
     </Layout>
   );
