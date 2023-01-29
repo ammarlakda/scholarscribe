@@ -2,9 +2,7 @@ import { useQuery } from "react-query";
 import "../../styles/components/response.scss";
 
 export default function Response({ fetchData }) {
-  const { isLoading, error, data } = useQuery("res", fetchData, {
-    enabled: false,
-  });
+  const { isLoading, error, data } = useQuery("res", fetchData);
 
   if (isLoading)
     return (

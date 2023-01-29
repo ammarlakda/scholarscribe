@@ -18,12 +18,12 @@ const TryIt = () => {
     const formData = new FormData();
 
     formData.append("file", selectedFile);
-
+    console.log("Before");
     const req = await fetch(`${import.meta.env.VITE_API_URL}/`, {
       method: "POST",
       body: formData,
     });
-
+    console.log("After");
     const res = await req.json();
     return res.summary;
   }
