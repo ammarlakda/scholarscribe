@@ -44,17 +44,13 @@ def split_article(Article):
       
     chunks[i//threshold] += " " + sentences[i]
     i += 1
+    
   master_string = ""
 
-  print(len(chunks))
   for i in range(len(chunks)):
-    
- 
     temp = summarize(chunks[i])[0]["summary_text"]
-
     master_string += temp
   
-  print(master_string)
   return master_string
 
 

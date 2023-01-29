@@ -54,4 +54,4 @@ def createPage(title: str, notes: str):
     return res
 
 if __name__ == "__main__":
-    createPage("Lecture 2", "•porn porn pron porn")
+    createPage("Lecture 2", "•hello hello hello")
