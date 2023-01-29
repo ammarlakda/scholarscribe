@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect, url_for, make_response
 import os
 from summarize import *
+from classification import *
 from speech_text import *
 from addToNotion import createPage
 from flask_cors import CORS
@@ -39,9 +40,11 @@ def handle_post_request():
     #summarize the transcript
     print('summarizing')
     summarize = split_article(transcript)
+    # calling classify
+    grouped = classifySummary(summarize)
     # add page to notion
-    createPage(filename, summarize)
-    response = make_response({"summary": summarize})
+    createPage(filename, grouped)
+    response = make_response({"summary": grouped})
     return response
 
 if __name__ == "__main__":

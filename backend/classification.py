@@ -5,7 +5,7 @@ def classifySummary(summaryText):
         
 
 
-    file = open("backend/apiKey.txt", "r")
+    file = open("apiKey.txt", "r")
 
     # Set the API key
     openai.api_key = file.read()
