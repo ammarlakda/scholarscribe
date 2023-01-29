@@ -5,25 +5,6 @@ from nltk import sent_tokenize
 #call summarizer 
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
-def split_article(Article):
-  #Maximum sequence length 
-  K = 950
-  #Total number of tokens in Document
-  N = len(sent_tokenize(Article))
-  sentences = sent_tokenize(Article)
-  #Let I be the number of sequences of K tokens or less in Document
-  I = (N/K)
-  i =0
-  threshold = 15
-  chunks = [""] * (N//threshold + 1)
-  while i < N: 
-    chunks[i//threshold] += " " + sentences[i]
-    i += 1
-  return chunks
-
-
-
-
 #article that we use to summarize
 ARTICLE = """ What you're doing right now at this very moment is killing you. 
 More than cars or the internet or even that little mobile device we keep talking about, the technology you're using the most almost every day is this, your TUSH. 
@@ -46,3 +27,31 @@ def summarize(Article):
   return summary
 
 print(summarize(ARTICLE))
+def split_article(Article):
+  #Maximum sequence length 
+  K = 950
+  #Total number of tokens in Document
+  N = len(sent_tokenize(Article))
+  sentences = sent_tokenize(Article)
+  #Let I be the number of sequences of K tokens or less in Document
+  I = (N/K)
+  i =0
+  threshold = 15
+  chunks = [""] * (N//threshold + 1)
+  while i < N: 
+    if len(sentences[i]) > K:
+      sentences[i] = summarize(sentences[i])[0]["summary_text"]
+      
+    chunks[i//threshold] += " " + sentences[i]
+    i += 1
+    
+  master_string = ""
+
+  for i in range(len(chunks)):
+    temp = summarize(chunks[i])[0]["summary_text"]
+    master_string += temp
+  
+  return master_string
+
+
+print(split_article(Article))
