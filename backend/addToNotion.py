@@ -1,7 +1,7 @@
 import requests, json
 from dotenv import dotenv_values
 
-config = dotenv_values("backend/.env")
+config = dotenv_values(".env")
 # print(config)
 
 headers = {

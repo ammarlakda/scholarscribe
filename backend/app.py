@@ -21,6 +21,7 @@ def allowed_file(filename):
 def handle_post_request():
     #receives video/audio file from front-end
     file = request.files['file']
+    print("file received")
     # saves the file
     if file and allowed_file(file.filename):
         # be careful with this
@@ -29,16 +30,15 @@ def handle_post_request():
         # I think this downloads the file, but I can be wrong
         return redirect(url_for('download_file', name=filename))
     #turn data into string
+    print('getting transcript')
     transcript = speech_text(filename)
 
     #summarize the transcript
+    print('summarizing')
     summarize = split_article(transcript)
     # add page to notion
     createPage(filename, summarize)
     return
 
-
-
-
-if __name__ == '__main__':
-    app.run(port=3000)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=8081)
