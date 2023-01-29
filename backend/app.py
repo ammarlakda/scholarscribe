@@ -1,12 +1,14 @@
-from flask import Flask, request, redirect, url_for
+from flask import Flask, request, redirect, url_for, make_response
 import os
 from summarize import *
 from speech_text import *
 from addToNotion import createPage
+from flask_cors import CORS
 
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/', methods=['GET'])
 def helloworld():
@@ -22,13 +24,14 @@ def handle_post_request():
     #receives video/audio file from front-end
     file = request.files['file']
     print("file received")
+    filename = ""
+    print(file.filename)
     # saves the file
-    if file and allowed_file(file.filename):
+    if file:
         # be careful with this
         filename = file.filename
-        file.save('backend', filename)
-        # I think this downloads the file, but I can be wrong
-        return redirect(url_for('download_file', name=filename))
+        file.save(filename)
+
     #turn data into string
     print('getting transcript')
     transcript = speech_text(filename)
@@ -38,7 +41,8 @@ def handle_post_request():
     summarize = split_article(transcript)
     # add page to notion
     createPage(filename, summarize)
-    return
+    response = make_response({"summary": summarize})
+    return response
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8081)

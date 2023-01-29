@@ -1,6 +1,7 @@
 from transformers import pipeline
 from nltk import sent_tokenize
-
+import nltk
+nltk.download('punkt')
 
 #call summarizer 
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
