@@ -2,7 +2,6 @@ import requests, json
 from dotenv import dotenv_values
 
 config = dotenv_values(".env")
-# print(config)
 
 headers = {
     "Authorization": "Bearer " + config["NOTION_KEY"],
