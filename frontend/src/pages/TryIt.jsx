@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import "../../styles/pages/tryit.scss";
 import Layout from "../components/Layout";
 import Response from "../components/Response";
-import DashboardComponent from "../components/dashboard";
+import DashboardComponent from "../components/Dashboard";
 
 const queryClient = new QueryClient();
 
@@ -24,8 +24,8 @@ const TryIt = () => {
       body: formData,
     });
 
-    const res = await req.text();
-    return res;
+    const res = await req.json();
+    return res.summary;
   }
 
   const getFileUploadHandler = (e) => {

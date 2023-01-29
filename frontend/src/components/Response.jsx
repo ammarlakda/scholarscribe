@@ -2,13 +2,24 @@ import { useQuery } from "react-query";
 import "../../styles/components/response.scss";
 
 export default function Response({ fetchData }) {
-  const { isLoading, error, data } = useQuery("res", fetchData);
+  const { isLoading, error, data } = useQuery("res", fetchData, {
+    enabled: false,
+  });
 
-  if (isLoading) return "Loading...";
+  if (isLoading)
+    return (
+      <div className="response">
+        <h3>Loading...</h3>
+      </div>
+    );
 
   if (error) {
     console.log(error);
-    return "An error has occurred";
+    return (
+      <div className="response">
+        <h3>An Error Has Occured</h3>
+      </div>
+    );
   }
 
   return (
