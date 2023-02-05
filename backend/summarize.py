@@ -21,8 +21,7 @@ def split_article(Article):
   I = (N//K)
   i =0
   chunks = [""] * (I + 1)
-  print(N)
-  print(I)
+  
   while i < N:
     # Padding start
     if i != 0:
@@ -46,14 +45,11 @@ def split_article(Article):
     i += 1
   master_string = ""
 
-  print(len(chunks))
   for i in range(len(chunks)):
     
     temp = summarize(chunks[i])[0]["summary_text"]
 
     master_string += temp
 
-    print(temp)
   
-  print(master_string)
   return master_string

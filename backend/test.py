@@ -1,8 +1,14 @@
-i = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-chunk_size=5
-overlap=2
-new_list=[]
-j=0
-while j < len(i):
-    j=j+chunk_size+overlap
-    new_list.append(j)
+from flask import Flask, request, redirect, url_for, make_response
+import os
+from summarize import *
+from classification import *
+from speech_text import *
+from addToNotion import createPage
+from text_bulletpoint import bullet
+
+file_name = "Stuart - Hotel Engine - Jan 17 2023.mp4"
+
+transcribed = speech_text(file_name)
+summarized = split_article(transcribed)
+bulleted = bullet(summarized)
+print(bullet)

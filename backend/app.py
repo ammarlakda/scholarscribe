@@ -41,10 +41,10 @@ def handle_post_request():
     print('summarizing')
     summarize = split_article(transcript)
     # calling classify
-    grouped = classifySummary(summarize)
+    # grouped = classifySummary(summarize)
     # add page to notion
-    createPage(filename, grouped)
-    response = make_response({"summary": grouped})
+    createPage(filename, summarize)
+    response = make_response({"summary": summarize})
     return response
 
 if __name__ == "__main__":
