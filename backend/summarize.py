@@ -36,7 +36,7 @@ def split_article(Article):
     chunks[i//K] += " " + words[i]
     
     # Padding end
-    if i % K == K-1:
+    if i % K == K-1 and i<N-paddingSize:
         counter = 1
         while counter <= paddingSize:
           chunks[i//K] += words[i+counter] + " "
@@ -49,7 +49,7 @@ def split_article(Article):
     
     temp = summarize(chunks[i])[0]["summary_text"]
 
-    master_string += temp
+    master_string += temp + "\n"
 
   
   return master_string
